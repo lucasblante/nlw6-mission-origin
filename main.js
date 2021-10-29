@@ -3,7 +3,6 @@ const header = document.querySelector('#header')
 const navHeight = header.offsetHeight
 
 function changeHeaderWhenScroll() {
-
   window.scrollY >= navHeight
     ? header.classList.add('scroll')
     : header.classList.remove('scroll')
@@ -34,10 +33,10 @@ const swiper = new Swiper('.swiper-container', {
   pagination: {
     el: '.swiper-pagination'
   },
+  inicialSlide: 1,
   scrollbar: true,
   mousewheel: true,
   keyboard: true,
-  loop: true,
   breakpoints: {
     767: {
       slidesPerView: 2,
@@ -70,7 +69,6 @@ scrollReveal.reveal(
 const backToTopButton = document.querySelector('.back-to-top')
 
 function backToTop() {
-
   window.addEventListener('scroll', () => {
     window.scrollY >= 560
       ? backToTopButton.classList.add('show')
@@ -93,8 +91,12 @@ function activateMenuAtCurrentSection() {
     const checkpointEnd = checkpoint <= sectionTop + sectionHeight
 
     checkpointStart && checkpointEnd
-    ? document.querySelector('nav ul li a[href*=' + sectionId + ']').classList.add('active')
-    : document.querySelector('nav ul li a[href*=' + sectionId + ']').classList.remove('active')
+      ? document
+          .querySelector('nav ul li a[href*=' + sectionId + ']')
+          .classList.add('active')
+      : document
+          .querySelector('nav ul li a[href*=' + sectionId + ']')
+          .classList.remove('active')
   }
 }
 
@@ -104,5 +106,3 @@ window.addEventListener('scroll', () => {
   backToTop()
   activateMenuAtCurrentSection()
 })
-
-
